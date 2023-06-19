@@ -58,24 +58,32 @@ export default {
   auth: {
     strategies: {
       local: {
+        token: {
+          type: "Token"
+        },
         endpoints: {
           login: {
-            url: 'auth/token/login/',
+            url: 'v1/auth-token/',
             method: 'post',
             propertyName: 'auth_token'
           },
           user: {
-            url: 'auth/users/me/',
+            url: 'v1/auth/users/me/',
             method: 'get',
             propertyName: false
           },
           logout: {
-            url: 'auth/token/logout/',
+            url: 'v1/auth/token/logout/',
             method: 'post'
           }
         },
         tokenType: 'Token',
-        tokenRequired: true
+        tokenRequired: true,
+        tokenName: 'Authorization',
+        redirect: {
+          login: '/login',
+          home: '/'
+        }
       }
     }
   },

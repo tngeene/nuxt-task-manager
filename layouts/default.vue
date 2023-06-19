@@ -63,9 +63,9 @@ export default {
           to: { name: 'index' }
         },
         {
-          title: 'Inspire',
+          title: 'Login',
           icon: 'lightbulb',
-          to: { name: 'inspire' }
+          to: { name: 'login' }
         }
       ]
     }
