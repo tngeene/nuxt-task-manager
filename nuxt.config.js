@@ -7,21 +7,21 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'Employee Task Management System', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      {
+        hid: 'description',
+        name: 'Employee Task Management System',
+        content: '',
+      },
+      { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [{ src: '~/plugins/persistedState.client.js' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -46,49 +46,51 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseUrl: process.env.baseAPIURL
+    baseUrl: process.env.baseAPIURL,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
-    }
+      lang: 'en',
+    },
   },
   auth: {
     strategies: {
       local: {
         token: {
-          type: "Token"
+          type: 'Token',
         },
         endpoints: {
           login: {
             url: 'v1/auth-token/',
             method: 'post',
-            propertyName: 'auth_token'
+            propertyName: 'auth_token',
           },
           user: {
             url: 'v1/auth/users/me/',
             method: 'get',
-            propertyName: false
+            propertyName: false,
           },
           logout: {
             url: 'v1/auth/token/logout/',
-            method: 'post'
-          }
+            method: 'post',
+          },
+        },
+        user: {
+          property: ''
         },
         tokenType: 'Token',
         tokenRequired: true,
         tokenName: 'Authorization',
         redirect: {
           login: '/login',
-          home: '/'
-        }
-      }
-    }
+          home: '/',
+        },
+      },
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
+  build: {},
 }

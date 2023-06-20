@@ -26,7 +26,9 @@ export default {
   middleware: 'guest',
   data: () => ({
     userData: { username: '', password: '' },
+    error: null
   }),
+  
 
   methods: {
     async login(userData) {
@@ -39,8 +41,9 @@ export default {
         this.$router.push('/tasks')
       } catch (e) {
         // this.$toast.error('Unable to login with provided credentials')
+        this.error = e
         // eslint-disable-next-line no-console
-        console.log('Unable to login with provided credentials')
+        console.log(this.error)
       }
     },
     async SendPasswordResetEmail() {

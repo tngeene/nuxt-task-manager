@@ -7,9 +7,6 @@ export const getters = {
       return state.auth.user // gets details of logged in user, returns null if no user is logged
     }
   }
-  export const mutations = {
-    
-  }
   export default {
     getters,
   }
